@@ -11,7 +11,7 @@ function BookList() {
   
     useEffect(() => {
       axios
-        .get('http://localhost:7000')
+        .get('https://backend-mern-final.onrender.com/')
         .then((res) => {
             console.log(res.data)
           setBooks(res.data);
@@ -22,7 +22,7 @@ function BookList() {
     }, []);
 
     const removeBook = (bookId) => {
-        axios.delete(`http://localhost:7000/${bookId}`)
+        axios.delete(`https://backend-mern-final.onrender.com/${bookId}`)
           .then((res) => {
             const newBooks = books.filter(b => b._id !== bookId);
             setBooks(newBooks);
