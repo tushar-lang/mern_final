@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 
+import "../App.css"
+
 function AddBook(props) {
     const [book, setBook] = useState({
       title: "",
       author: "",
       description: "",
     });
-  
     const [isSubmitted, setIsSubmitted] = useState(false);
-  
+    
     const handleChange = (e) => {
       setBook({ ...book, [e.target.name]: e.target.value });
     };
@@ -18,14 +19,14 @@ function AddBook(props) {
       console.log(book);
       setIsSubmitted(true);
     };
-  
+  // Add a book arrow function is to add a book in the Book's collection
     const addBook = () => {
       const title = document.getElementById("title").value;
       const author = document.getElementById("author").value;
       const description = document.getElementById("description").value;
   
       if (title && author && description) {
-        console.log("HI--------->")
+        console.log("HI--------->");
         const requestOptions = {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -37,7 +38,6 @@ function AddBook(props) {
         };
         fetch("https://backend-mern-final.onrender.com/", requestOptions).then((response) =>
           response.json()
-          
         );
       }
     };
